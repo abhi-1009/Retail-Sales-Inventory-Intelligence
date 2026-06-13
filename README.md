@@ -9,10 +9,6 @@
 
 A complete **3-phase retail analytics pipeline** — Excel preprocessing → MySQL database design → Power BI dashboards — built on a 9-table relational retail dataset covering 1,615 orders, $7.69M revenue, 1,445 customers, and 3 stores across NY, CA, and TX. Delivers 6 key business findings and 5 actionable recommendations.
 
-> 📌 **Built during Data Analytics Internship at Labmentix, Bengaluru (May 2026)**
-
----
-
 ## 📋 Table of Contents
 
 - [Problem Statement](#problem-statement)
@@ -23,11 +19,7 @@ A complete **3-phase retail analytics pipeline** — Excel preprocessing → MyS
 - [Phase 3 — Power BI Dashboards](#phase-3--power-bi-dashboards)
 - [Key Business Findings](#key-business-findings)
 - [Business Recommendations](#business-recommendations)
-- [Screenshots](#screenshots)
-- [Project Deliverables](#project-deliverables)
 - [Future Scope](#future-scope)
-
----
 
 ## 📌 Problem Statement
 
@@ -45,8 +37,6 @@ A retail company operating **3 stores across NY, CA, and TX** had no structured 
 | 6 | Monitor delayed shipments vs required delivery dates |
 | 7 | Discover customer concentration and buying patterns |
 | 8 | Understand order trends — daily, weekly, monthly |
-
----
 
 ## 📂 Dataset
 
@@ -71,8 +61,6 @@ A retail company operating **3 stores across NY, CA, and TX** had no structured 
 | `categories` | 7 | Mountain, Road, Cruisers, Electric, Cyclocross... |
 | `stocks` | 939 | Inventory quantity per store per product |
 
----
-
 ## 🛠️ Technologies Used
 
 | Technology | Version | Purpose |
@@ -81,8 +69,6 @@ A retail company operating **3 stores across NY, CA, and TX** had no structured 
 | **MySQL** | 8.0 | Schema design, 9 tables, 8 FK relationships, SQL queries, Views |
 | **Microsoft Power BI** | Desktop | 3 dashboards, 32 DAX measures, 6 synced slicers |
 | **SQL** | — | 9 analytical queries + 4 Views for BI integration |
-
----
 
 ## 🔄 Phase 1 — Excel Data Preprocessing
 
@@ -107,15 +93,11 @@ A retail company operating **3 stores across NY, CA, and TX** had no structured 
 | Late Shipments Identified | **458 orders** |
 | Unshipped Orders Flagged | **170 orders** |
 
----
-
 ## 🗄️ Phase 2 — MySQL Database & SQL Queries
 
 ### Database Schema
 
 **9 Tables | 8 Foreign Key Relationships | All FK checks passed ✓**
-
-```
 brands          → brand_id PK, brand_name
 categories      → category_id PK, category_name
 stores          → store_id PK, store_name, city, state
@@ -125,7 +107,6 @@ products        → product_id PK, name, brand_id FK, category_id FK
 orders          → order_id PK, customer_id FK, store_id FK, staff_id FK
 order_items     → order_id FK + item_id PK, product_id FK, qty, price
 stocks          → store_id FK + product_id FK (composite PK), qty
-```
 
 ### SQL Queries Written (9 Queries)
 
@@ -149,8 +130,6 @@ stocks          → store_id FK + product_id FK (composite PK), qty
 | `vw_stock_summary` | Inventory levels per store per product with alert flags |
 | `vw_staff_performance` | Total revenue and order count per staff member |
 | `vw_customer_ltv` | Customer lifetime value aggregation with repeat flag |
-
----
 
 ## 📊 Phase 3 — Power BI Dashboards
 
@@ -188,8 +167,6 @@ stocks          → store_id FK + product_id FK (composite PK), qty
 - Repeat vs one-time buyer breakdown
 - Shipment status by store
 
----
-
 ## 🔍 Key Business Findings
 
 | # | Finding | Evidence |
@@ -201,8 +178,6 @@ stocks          → store_id FK + product_id FK (composite PK), qty
 | 5 | **Customer Retention Crisis** | 91% of 1,445 customers placed only 1 order — only 131 (9%) are repeat buyers |
 | 6 | **Strong 2017 Growth** | Revenue grew from $2.43M (2016) to $3.45M (2017) — **+42% year-over-year growth** |
 
----
-
 ## 💡 Business Recommendations
 
 | # | Recommendation | Current State | Target Action |
@@ -212,50 +187,6 @@ stocks          → store_id FK + product_id FK (composite PK), qty
 | R3 | **Reduce Store & Brand Dependency** | Baldwin 67.8%, Trek 59.9% | Invest in CA and TX stores; negotiate with 2–3 additional brands |
 | R4 | **Automate Inventory Reorder Alerts** | 25 out-of-stock, 141 low-stock | Auto reorder at 10-unit threshold; prioritise Trek Mountain and Road Bikes |
 | R5 | **Optimise Discount Strategy** | $889,872 discounts (10.5% avg) | Audit 20% discount tier on 1,203 orders; test reducing to 15% |
-
----
-
-## 📸 Screenshots
-
-> **Note:** Save Power BI screenshots in a `/screenshots` folder and replace the placeholder paths below.
-
-### 1. Executive Summary Dashboard
-![Executive Summary](screenshots/01_executive_summary.png)
-*KPI cards: $7.69M revenue, 1,615 orders, 1,445 customers, +42% YoY growth, 31.7% late rate*
-
-### 2. Revenue by Store, Brand & Category
-![Sales Performance](screenshots/02_sales_performance.png)
-*Baldwin NY 67.8% · Trek 59.9% · Mountain Bikes 35.3% — bar and donut charts*
-
-### 3. Staff Performance Dashboard
-![Staff Performance](screenshots/03_staff_performance.png)
-*Boyer $2.62M · Daniel $2.59M — top 2 staff handle 68% of all revenue*
-
-### 4. Inventory Intelligence — Stock Alerts
-![Inventory](screenshots/04_inventory_alerts.png)
-*25 out-of-stock · 141 low-stock products flagged with store-level breakdown*
-
-### 5. Customer Intelligence Dashboard
-![Customer](screenshots/05_customer_intelligence.png)
-*91% one-time buyers · Top customer LTV $34.8K · NY = 70% of customers*
-
-### 6. Late Shipment Analysis
-![Shipments](screenshots/06_late_shipments.png)
-*458 late shipments (31.7%) — Santa Cruz 36.6% worst performer across 3 stores*
-
----
-
-## 📦 Project Deliverables
-
-| File | Description |
-| :--- | :--- |
-| `Retail_Cleaned.xlsx` | 9 cleaned sheets + 5 calculated columns |
-| `Retail_Analysis.sql` | 9 SQL queries + 4 Views + schema creation script |
-| `Retail_Analysis_Dashboard.pbix` | Power BI file with 3 dashboards + 32 DAX measures |
-| `ER_Diagram.png` | Entity-relationship diagram showing all FK relationships |
-| `Project_Report.pptx` | Full project presentation with findings and recommendations |
-
----
 
 ## 🔮 Future Scope
 
@@ -267,8 +198,6 @@ stocks          → store_id FK + product_id FK (composite PK), qty
 | 4 | **Churn Prediction Model** | Binary classifier (Logistic Regression / Random Forest) to identify customers likely not to return |
 | 5 | **Supplier & Shipment Intelligence** | Track supplier lead times and carrier performance to fix the 31.7% late shipment root cause |
 | 6 | **Mobile-First Dashboard** | Publish to Power BI Service with mobile-optimised layouts for store managers |
-
----
 
 ## 👤 Author
 
